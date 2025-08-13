@@ -1,0 +1,142 @@
+body {
+  display: grid;
+  justify-self: center;
+  align-items: center;
+  width: 320px;
+  max-width: 375px;
+  height: 100vh;
+  background-color: var(--Slate-100);
+  /* outline: 1px dashed yellow; */
+}
+
+#mortgage-calculator {
+  background-color: var(--White);
+}
+
+#calculator-header,
+#form-section,
+#results {
+  padding: 1.2rem;
+}
+
+.title,
+.unit {
+ font: var(--text-md);
+ /* outline: 1px solid red; */
+}
+
+.calculator-title {
+ color: var(--Slate-900);
+}
+
+.clear-form,
+.label,
+.unit,
+.subtitle {
+  font: var(--text);
+  color: var(--Slate-500);
+}
+
+.clear-form {
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  background-color: var(--White);
+  border: none;
+}
+
+#form-content {
+  display: grid;
+  gap: 1.3rem;
+  outline: 1px dashed green;
+}
+
+.input-with-unit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--Slate-700);
+  /* outline: 1px dashed red; */
+  overflow: hidden;
+}
+
+input {
+  padding: 0.55rem;
+  border: 1px solid var(--Slate-700);
+  /* outline: 1px dashed red; */
+}
+
+.form__amount .unit {
+  /* justify-self: flex-start; */
+  border-right-color: transparent;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.form__term .unit,
+.form__interest .unit {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  /* border-left-color: transparent; */
+  border-left-color: transparent;
+}
+
+#mortgage-amount {
+  justify-self: flex-start;
+  width: 290px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left-color: transparent;
+}
+
+#mortgage-term,
+#interest-rate {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right-color: transparent;
+}
+
+#mortgage-term {
+  width: 270px;
+}
+
+#interest-rate {
+  width: 290px;
+}
+
+.unit {
+  padding: 0.7rem 1rem;
+  background-color: var(--Slate-100);
+  border: 1px solid var(--Slate-700);
+}
+
+.form__type {
+  display: grid;
+  gap: 5px;
+  padding: 1rem;
+  border: transparent;
+}
+
+.form__type label {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-self: flex-start;
+  width: 290px;
+  padding: 1rem;
+  border: 1px solid var(--Slate-700);
+  border-radius: 5px;
+}
+
+.radio-span {
+  justify-self: flex-start;
+  border: 1px solid red;
+}
+
+#results {
+  background-color: var(--Slate-900);
+}
+
+.filled-state {
+  display: none;
+}

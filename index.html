@@ -9,6 +9,7 @@
   
   <title>Frontend Mentor | Mortgage repayment calculator</title>
 
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
 
@@ -31,14 +32,14 @@
           <label class="label" for="mortgage-term">Mortgage Term</label>
           <div class="input-with-unit">
             <input type="number" step="1" min="0" name="mortgage-term" id="mortgage-term" required>
-            <span>years</span>
+            <span class="unit">years</span>
           </div>
         </div>
         <div class="form__interest">
           <label class="label" for="interest-rate">Interest Rate</label>
           <div class="input-with-unit">
             <input type="number" step="0.01" min="0" name="interest-rate" id="interest-rate" required>
-            <span>%</span>
+            <span class="unit">%</span>
           </div>
         </div>
         <fieldset class="form__type">
