@@ -6,7 +6,6 @@ body {
   max-width: 375px;
   height: 100vh;
   background-color: var(--Slate-100);
-  /* outline: 1px dashed yellow; */
 }
 
 #mortgage-calculator {
@@ -20,9 +19,9 @@ body {
 }
 
 .title,
-.unit {
+.form__type,
+.form-button {
  font: var(--text-md);
- /* outline: 1px solid red; */
 }
 
 .calculator-title {
@@ -31,8 +30,8 @@ body {
 
 .clear-form,
 .label,
-.unit,
-.subtitle {
+.subtitle,
+.form__type legend {
   font: var(--text);
   color: var(--Slate-500);
 }
@@ -44,32 +43,59 @@ body {
   border: none;
 }
 
+.clear-form:hover {
+  color: var(--Slate-900);
+  transform: translateY(-1px);  
+}
+
+.clear-form:focus {
+  color: var(--Lime);
+}
+
 #form-content {
   display: grid;
   gap: 1.3rem;
-  outline: 1px dashed green;
 }
 
 .input-with-unit {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   align-content: center;
   margin-top: 0.5rem;
   border-radius: 5px;
   border: 1px solid var(--Slate-700);
-  /* outline: 1px dashed red; */
   overflow: hidden;
 }
 
-input {
-  padding: 0.55rem;
-  border: 1px solid var(--Slate-700);
-  /* outline: 1px dashed red; */
+.input-with-unit:focus-within {
+  border: 1px solid var(--Lime);
+}
+
+.input-with-unit:hover {
+  border: 1px solid var(--Slate-900);
+}
+
+.input-with-unit .unit {
+  padding: 1rem;
+  font: var(--text-inputs);
+  background-color: var(--Slate-100);
+  color: var(--Slate-700);
+  white-space: nowrap;
+}
+
+.input-with-unit:focus-within .unit {
+  background-color: var(--Lime);
+  color: var(--Slate-900);
+}
+
+.input-with-unit input {
+  flex: 1;
+  min-width: 0;
+  padding: 1rem;
+  font: var(--text-inputs);
+  border: none;
 }
 
 .form__amount .unit {
-  /* justify-self: flex-start; */
-  border-right-color: transparent;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -78,65 +104,150 @@ input {
 .form__interest .unit {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  /* border-left-color: transparent; */
-  border-left-color: transparent;
 }
 
 #mortgage-amount {
-  justify-self: flex-start;
-  width: 290px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-left-color: transparent;
 }
 
 #mortgage-term,
 #interest-rate {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  border-right-color: transparent;
 }
 
-#mortgage-term {
-  width: 270px;
-}
-
-#interest-rate {
-  width: 290px;
-}
-
-.unit {
-  padding: 0.7rem 1rem;
-  background-color: var(--Slate-100);
-  border: 1px solid var(--Slate-700);
+button,
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
 }
 
 .form__type {
   display: grid;
-  gap: 5px;
-  padding: 1rem;
-  border: transparent;
+  gap: 1rem;
+  padding: 0;
+  /* font: var(--text-md); */
+  color: var(--Slate-900);
+  border: none;
 }
 
-.form__type label {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-self: flex-start;
-  width: 290px;
+.form__type > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   padding: 1rem;
   border: 1px solid var(--Slate-700);
   border-radius: 5px;
 }
 
-.radio-span {
-  justify-self: flex-start;
-  border: 1px solid red;
+.form__type > div:hover {
+  border: 1px solid var(--Lime-hover);
+}
+
+input,
+button,
+.input-with-unit,
+.form__type > div {
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--Lime);
+  /* outline: 2px solid var(--Slate-900); */
+  outline-offset: 2px;
+}
+
+.form__type legend {
+  margin-bottom: 0.5rem;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--Slate-900);
+  background-color: var(--Lime);
+  border-radius: 25px;
+  border: none;
+}
+
+.form-button:hover {
+  background-color: var(--Lime-hover);
+  transform: translateY(-1px);
+}
+
+.form-button img {
+  width: 20px;
+  height: auto;
+}
+
+.form-button span {
+  font: inherit;
 }
 
 #results {
   background-color: var(--Slate-900);
 }
 
+.empty-state {
+  display: grid;
+  gap: 0.5rem;
+  justify-content: center;
+  text-align: center;
+  color: var(--White);
+  /* display: none; */
+}
+
+.empty-state img {
+  justify-self: center;
+}
+
+.empty-state p {
+  width: 80%;
+  margin: auto;
+}
+
 .filled-state {
   display: none;
+  gap: 1.2rem;
+  padding: 1.4rem;
+  color: var(--White);
+}
+
+.repayments {
+  display: grid;
+  gap: 2rem;
+  padding: 1.5rem 1.25rem;
+  background-color: var(--Slate-1100);
+  border-radius: 5px;
+  border-top: 2px solid var(--Lime);
+}
+
+.result-span {
+  font: var(--text);
+  color: var(--Slate-500);
+}
+
+.monthly-repayment,
+.total-repayment {
+  display: grid;
+  grid-column: 1;
+  gap: 1rem;
+}
+
+#result-monthly {
+  font: var(--text-lg-mobile);
+  color: var(--Lime);
+  border-bottom: 1px solid var(--Slate-900);
+  padding-bottom: 1.5rem;
+}
+
+#result-total {
+  font: var(--text-lg);
 }

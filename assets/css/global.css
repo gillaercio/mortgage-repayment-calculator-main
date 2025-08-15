@@ -15,6 +15,7 @@ html {
 
 :root {
   --Lime: hsl(61, 70%, 52%);
+  --Lime-hover: hsl(61, 60%, 44%);
   --Red: hsl(4, 69%, 50%);
 
   --White: hsl(0, 0%, 100%);
@@ -23,12 +24,14 @@ html {
   --Slate-500: hsl(200, 26%, 54%);
   --Slate-700: hsl(200, 24%, 40%);
   --Slate-900: hsl(202, 55%, 16%);
+  --Slate-1100: hsl(202, 51%, 10%);
 
   --jakarta-font: 'Jakarta', sans-serif;
   --text-error: 500 1rem/120% var(--jakarta-font);
-  --text: 500 1.2rem/120% var(--jakarta-font);
-  --text-inputs: 700 1.2rem/120% var(--jakarta-font);
-  --text-md: 700 1.6rem/120% var(--jakarta-font);
-  --text-lg-mobile: 700 2.2rem/120% var(--jakarta-font);
-  --text-lg-desktop: 700 2.6rem/120% var(--jakarta-font);
+  --text: 500 1.3rem/120% var(--jakarta-font);
+  --text-inputs: 700 1.3rem/120% var(--jakarta-font);
+  --text-md: 700 1.7rem/120% var(--jakarta-font);
+  --text-lg: 700 2rem/120% var(--jakarta-font);
+  --text-lg-mobile: 700 3rem/120% var(--jakarta-font);
+  --text-lg-desktop: 700 3rem/120% var(--jakarta-font);
 }
