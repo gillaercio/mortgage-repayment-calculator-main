@@ -15,6 +15,7 @@ html {
 
 :root {
   --Lime: hsl(61, 70%, 52%);
+  --Lime-alfa: hsla(61, 70%, 52%, 0.1);
   --Lime-hover: hsl(61, 60%, 44%);
   --Red: hsl(4, 69%, 50%);
 

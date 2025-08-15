@@ -127,9 +127,19 @@ input[type="checkbox"] {
   display: grid;
   gap: 1rem;
   padding: 0;
-  /* font: var(--text-md); */
   color: var(--Slate-900);
   border: none;
+}
+
+.form__type legend {
+  margin-bottom: 0.5rem;
+}
+
+input[type="radio"] {
+  /* display: none; */
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
 }
 
 .form__type > div {
@@ -139,10 +149,50 @@ input[type="checkbox"] {
   padding: 1rem;
   border: 1px solid var(--Slate-700);
   border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .form__type > div:hover {
   border: 1px solid var(--Lime-hover);
+}
+
+.form__type label {
+  position: relative;
+  padding-left: 3rem;
+  cursor: pointer;
+  font: var(--text-md);
+  color: var(--Slate-900);
+  flex: 1;
+}
+
+.form__type label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--Slate-700);
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+input[type="radio"]:checked + label::before {
+  background-color: var(--Lime);
+  border-color: var(--Lime);
+  box-shadow: inset 0 0 0 4px var(--White);
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--Lime-alfa);
+  padding-left: 3rem;
+}
+
+.form__type > div:has(input[type="radio"]:checked) {
+  border-color: var(--Lime);
+  background-color: var(--Lime-alfa);
 }
 
 input,
@@ -155,12 +205,13 @@ button,
 input:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--Lime);
-  /* outline: 2px solid var(--Slate-900); */
   outline-offset: 2px;
 }
 
-.form__type legend {
-  margin-bottom: 0.5rem;
+input[type="radio"]:focus-visible + label {
+  outline: 2px solid var(--Lime);
+  outline-offset: 9px;
+  /* border-radius: 2px; */
 }
 
 .form-button {
@@ -201,7 +252,6 @@ button:focus-visible {
   justify-content: center;
   text-align: center;
   color: var(--White);
-  /* display: none; */
 }
 
 .empty-state img {
