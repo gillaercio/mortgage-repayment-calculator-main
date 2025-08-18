@@ -14,12 +14,13 @@
 <body>
 
   <main id="mortgage-calculator">
-    <header id="calculator-header">
-      <h1 class="calculator-title title">Mortgage Calculator</h1>
-      <button type="reset" class="clear-form">Clear All</button>
-    </header>
 
     <section id="form-section">
+      <header id="calculator-header">
+        <h1 class="calculator-title title">Mortgage Calculator</h1>
+        <button type="reset" class="clear-form">Clear All</button>
+      </header>
+
       <form id="form-content">
         <div class="form__amount">
           <label class="label" for="mortgage-amount">Mortgage Amount</label>
@@ -29,19 +30,20 @@
           </div>
         </div>
 
-        <div class="form__term">
-          <label class="label" for="mortgage-term">Mortgage Term</label>
-          <div class="input-with-unit">
-            <input type="number" step="1" min="0" name="mortgage-term" id="mortgage-term" required>
-            <span class="unit">years</span>
+        <div class="inline-div">
+          <div class="form__term">
+            <label class="label" for="mortgage-term">Mortgage Term</label>
+            <div class="input-with-unit">
+              <input type="number" step="1" min="0" name="mortgage-term" id="mortgage-term" required>
+              <span class="unit">years</span>
+            </div>
           </div>
-        </div>
-
-        <div class="form__interest">
-          <label class="label" for="interest-rate">Interest Rate</label>
-          <div class="input-with-unit">
-            <input type="number" step="0.01" min="0" name="interest-rate" id="interest-rate" required>
-            <span class="unit">%</span>
+          <div class="form__interest">
+            <label class="label" for="interest-rate">Interest Rate</label>
+            <div class="input-with-unit">
+              <input type="number" step="0.01" min="0" name="interest-rate" id="interest-rate" required>
+              <span class="unit">%</span>
+            </div>
           </div>
         </div>
 

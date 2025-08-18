@@ -12,7 +12,6 @@ body {
   background-color: var(--White);
 }
 
-#calculator-header,
 #form-section,
 #results {
   padding: 1.2rem;
@@ -55,6 +54,7 @@ body {
 #form-content {
   display: grid;
   gap: 1.3rem;
+  margin-top: 2rem;
 }
 
 .input-with-unit {
@@ -121,6 +121,11 @@ button,
 input[type="radio"],
 input[type="checkbox"] {
   cursor: pointer;
+}
+
+.inline-div {
+  display: grid;
+  gap: 1.3rem;
 }
 
 .form__type {
@@ -300,4 +305,93 @@ input[type="radio"]:focus-visible + label {
 
 #result-total {
   font: var(--text-lg);
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    justify-content: center;
+    /* background-color: greenyellow; */
+  }
+
+  #mortgage-calculator {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 1024px;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+
+  #form-section,
+  #results {
+    padding: 3rem;
+  }
+
+  #form-content {
+    gap: 2.5rem;
+  }
+
+  #calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font: var(--text-lg);
+  }
+
+  .clear-form,
+  .label,
+  .subtitle,
+  .form__type legend,
+  .result-span {
+    /* font: var(--text); */
+    font-size: clamp(1.2rem, 1.1rem + 1.666vw, 1.4rem);
+  }
+
+  .inline-div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-button {
+    display: flex;
+    width: 65%;
+    align-items: flex-end;
+  }
+
+  #results {
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 50px;
+  }
+
+  .empty-state {
+    gap: 1rem;
+    display: none;
+  }
+
+  .filled-state {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-self: flex-start;
+    padding: 0;
+    /* outline: 1px solid red; */
+  }
+
+  .repayments {
+    gap: 2.5rem;
+    padding: 3rem 2.5rem;
+    border-radius: 10px;
+  }
+
+  #result-monthly {
+    font: var(--text-lg-desktop);
+  }
+
+  #result-total {
+    /* font: var(--text-lg); */
+    font-size: clamp(2rem, 2rem + 1.666vw, 2.6rem);
+  }
 }

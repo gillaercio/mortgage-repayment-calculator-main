@@ -34,5 +34,5 @@ html {
   --text-md: 700 1.7rem/120% var(--jakarta-font);
   --text-lg: 700 2rem/120% var(--jakarta-font);
   --text-lg-mobile: 700 3rem/120% var(--jakarta-font);
-  --text-lg-desktop: 700 3rem/120% var(--jakarta-font);
+  --text-lg-desktop: 700 5rem/120% var(--jakarta-font);
 }
