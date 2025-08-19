@@ -18,7 +18,7 @@
     <section id="form-section">
       <header id="calculator-header">
         <h1 class="calculator-title title">Mortgage Calculator</h1>
-        <button type="reset" class="clear-form">Clear All</button>
+        <button type="reset" id="clear-form" onclick="clearForm()">Clear All</button>
       </header>
 
       <form id="form-content">
@@ -59,7 +59,7 @@
           </div>
         </fieldset>
 
-        <button type="submit" class="form-button">
+        <button type="submit" id="form-button" onclick="sendButton(event)">
           <img src="assets/images/icon-calculator.svg" alt="Icon calculator">
           <span>Calculate Repayments</span>
         </button>
@@ -90,5 +90,6 @@
       </div>
     </section>
   </main>
+  <script src="assets/js/index.js"></script>
 </body>
 </html>

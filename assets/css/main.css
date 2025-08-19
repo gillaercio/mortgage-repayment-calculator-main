@@ -19,7 +19,7 @@ body {
 
 .title,
 .form__type,
-.form-button {
+#form-button {
  font: var(--text-md);
 }
 
@@ -27,7 +27,7 @@ body {
  color: var(--Slate-900);
 }
 
-.clear-form,
+#clear-form,
 .label,
 .subtitle,
 .form__type legend {
@@ -35,19 +35,19 @@ body {
   color: var(--Slate-500);
 }
 
-.clear-form {
+#clear-form {
   margin-top: 0.5rem;
   text-decoration: underline;
   background-color: var(--White);
   border: none;
 }
 
-.clear-form:hover {
+#clear-form:hover {
   color: var(--Slate-900);
   transform: translateY(-1px);  
 }
 
-.clear-form:focus {
+#clear-form:focus {
   color: var(--Lime);
 }
 
@@ -219,7 +219,7 @@ input[type="radio"]:focus-visible + label {
   /* border-radius: 2px; */
 }
 
-.form-button {
+#form-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -233,17 +233,17 @@ input[type="radio"]:focus-visible + label {
   border: none;
 }
 
-.form-button:hover {
+#form-button:hover {
   background-color: var(--Lime-hover);
   transform: translateY(-1px);
 }
 
-.form-button img {
+#form-button img {
   width: 20px;
   height: auto;
 }
 
-.form-button span {
+#form-button span {
   font: inherit;
 }
 
@@ -341,7 +341,7 @@ input[type="radio"]:focus-visible + label {
     font: var(--text-lg);
   }
 
-  .clear-form,
+  #clear-form,
   .label,
   .subtitle,
   .form__type legend,
@@ -350,14 +350,37 @@ input[type="radio"]:focus-visible + label {
     font-size: clamp(1.2rem, 1.1rem + 1.666vw, 1.4rem);
   }
 
+  .input-with-unit input {
+    font-weight: 800;
+    color: var(--Slate-900);
+  }
+
+  .input-with-unit .unit {
+    padding: 1.5rem;
+    font-weight: 800;
+  }
+
   .inline-div {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .form-button {
+  #form-button {
     display: flex;
     width: 65%;
     align-items: flex-end;
+  }
+
+  .form__type > div {
+    padding: 1.5rem;
+  }
+
+  #form-button {
+    padding: 1.5rem;
+  }
+  
+  #form-button > span {
+    display: flex;
+    align-items: center;
   }
 
   #results {
@@ -367,12 +390,12 @@ input[type="radio"]:focus-visible + label {
   }
 
   .empty-state {
+    display: grid;
     gap: 1rem;
-    display: none;
   }
 
   .filled-state {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 2rem;
     align-self: flex-start;
