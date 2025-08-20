@@ -18,7 +18,8 @@
     <section id="form-section">
       <header id="calculator-header">
         <h1 class="calculator-title title">Mortgage Calculator</h1>
-        <button type="reset" id="clear-form" onclick="clearForm(event)">Clear All</button>
+        <!-- <button type="reset" id="clear-form" onclick="clearForm(event)">Clear All</button> -->
+        <button type="reset" id="clear-form">Clear All</button>
       </header>
 
       <form id="form-content">
@@ -54,7 +55,7 @@
             <label for="repayment">Repayment</label>
           </div>
           <div>
-            <input type="radio" name="mortgage-type" id="interest-only" value="interest-only">
+            <input type="radio" name="mortgage-type" id="interest-only" value="interest-only" required>
             <label for="interest-only">Interest Only</label>
           </div>
         </fieldset>
