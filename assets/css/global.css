@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -27,7 +29,7 @@ html {
   --Slate-900: hsl(202, 55%, 16%);
   --Slate-1100: hsl(202, 51%, 10%);
 
-  --jakarta-font: 'Jakarta', sans-serif;
+  --jakarta-font: 'Plus Jakarta Sans', sans-serif;
   --text-error: 500 1rem/120% var(--jakarta-font);
   --text: 500 1.3rem/120% var(--jakarta-font);
   --text-inputs: 700 1.3rem/120% var(--jakarta-font);
