@@ -5,36 +5,69 @@ const filledState = document.querySelector('.filled-state');
 const resultMonthly = document.getElementById('result-monthly');
 const resultTotal = document.getElementById('result-total');
 
+const typeErrorMsg = document.querySelector('fieldset.form__type + .error-message');
+
 function sendButton(event) {
   event.preventDefault()
 
-  if(!form.checkValidity()) {
-    form.reportValidity();
-    return;
+  const mortgageAmountEl = document.getElementById("mortgage-amount");
+  const mortgageTermEl = document.getElementById("mortgage-term");
+  const interestRateEl = document.getElementById("interest-rate");
+  const repaymentEl = document.getElementById("repayment");
+  const interestOnlyEl = document.getElementById("interest-only");
+
+  document.querySelectorAll(".error-message").forEach(msg => msg.textContent = "");
+  document.querySelectorAll(".input-error").forEach(el => el.classList.remove("input-error"));
+
+  const required = 'This field is required';
+  let hasError = false;
+
+  if (!mortgageAmountEl.value.trim()) {
+    showFieldError(mortgageAmountEl, required);
+    hasError = true;
   }
 
-  const mortgageAmount = parseFloat(document.getElementById('mortgage-amount').value);
-  const mortgageTerm = parseInt(document.getElementById('mortgage-term').value);
-  const interestRate = parseFloat(document.getElementById('interest-rate').value);
-  const mortgageType = document.querySelector('input[name="mortgage-type"]:checked').value;
-
-  const months = mortgageTerm * 12;
-  const monthlyRate = interestRate / 100 / 12;
-
-  let monthlyRepayment = 0;
-  let totalRepayment = 0;
-
-  if (mortgageType === 'repayment') {
-    const factor = (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-    monthlyRepayment = mortgageAmount * factor;
-    totalRepayment = monthlyRepayment * months;
-  } else if (mortgageType === 'interest-only') {
-    monthlyRepayment = mortgageAmount * monthlyRate;
-    totalRepayment = monthlyRepayment * months + mortgageAmount;
+  if (!mortgageTermEl.value.trim()) {
+    showFieldError(mortgageTermEl, required);
+    hasError = true;
   }
 
-  resultMonthly.textContent = `£${monthlyRepayment.toFixed(2)}`;
-  resultTotal.textContent = `£${totalRepayment.toFixed(2)}`;
+  if (!interestRateEl.value.trim()) {
+    showFieldError(interestRateEl, required);
+    hasError = true;
+  }
+
+  if (!repaymentEl.checked && !interestOnlyEl.checked) {
+    if (typeErrorMsg) {
+      typeErrorMsg.textContent = required;
+      typeErrorMsg.style.visibility = 'visible';
+    }
+    hasError = true;
+  }
+
+  if (hasError) return;
+
+  const mortgageAmount = parseFloat(mortgageAmountEl.value);
+  const mortgageTerm = parseInt(mortgageTermEl.value);
+  const interestRate = parseFloat(interestRateEl.value) / 100;
+
+  let monthlyPayment = 0;
+  let totalPayment = 0;
+
+
+  if (repaymentEl.checked) {
+    const monthlyRate = interestRate / 12;
+    const numberOfPayments = mortgageTerm * 12;
+
+    monthlyPayment = (mortgageAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    totalPayment = monthlyPayment * numberOfPayments;
+  } else if (interestOnlyEl.checked) {
+    monthlyPayment = (mortgageAmount * interestRate) / 12;
+    totalPayment = monthlyPayment * mortgageTerm * 12;
+  }
+
+  resultMonthly.textContent = `£${monthlyPayment.toFixed(2)}`;
+  resultTotal.textContent = `£${totalPayment.toFixed(2)}`;
 
   emptyState.style.display = "none";
   filledState.style.display = "grid";
@@ -42,6 +75,29 @@ function sendButton(event) {
 
 clearButton.addEventListener('click', () => {
   form.reset();
+
   emptyState.style.display = "grid";
   filledState.style.display = "none";
+
+  document.querySelectorAll(".error-message").forEach(msg => {
+    msg.textContent = "";
+    msg.style.visibility = "hidden";
+  });
+
+  document.querySelectorAll(".input-with-unit.input-error").forEach(el => {
+    el.classList.remove("input-error");
+  });
 });
+
+function showFieldError(inputEl, message) {
+  const wrapper = inputEl.closest('.input-with-unit') || inputEl;
+  wrapper.classList.add('input-error');
+
+  const container = wrapper.parentElement;
+  const errorMsg = container?.querySelector('.error-message');
+
+  if (errorMsg) {
+    errorMsg.textContent = message;
+    errorMsg.style.visibility = "visible";
+  };
+}

@@ -26,38 +26,42 @@
           <label class="label" for="mortgage-amount">Mortgage Amount</label>
           <div class="input-with-unit">
             <span class="unit">£</span>
-            <input type="number" step="0.01" min="0" name="mortgage-amount" id="mortgage-amount" required>
+            <input type="number" step="0.01" min="0" name="mortgage-amount" id="mortgage-amount">
           </div>
+          <small class="error-message"></small>
         </div>
 
         <div class="inline-div">
           <div class="form__term">
             <label class="label" for="mortgage-term">Mortgage Term</label>
             <div class="input-with-unit">
-              <input type="number" step="1" min="0" name="mortgage-term" id="mortgage-term" required>
+              <input type="number" step="1" min="0" name="mortgage-term" id="mortgage-term">
               <span class="unit">years</span>
             </div>
+            <small class="error-message"></small>
           </div>
           <div class="form__interest">
             <label class="label" for="interest-rate">Interest Rate</label>
             <div class="input-with-unit">
-              <input type="number" step="0.01" min="0" name="interest-rate" id="interest-rate" required>
+              <input type="number" step="0.01" min="0" name="interest-rate" id="interest-rate">
               <span class="unit">%</span>
             </div>
+            <small class="error-message"></small>
           </div>
         </div>
 
         <fieldset class="form__type">
           <legend class="label">Mortgage Type</legend>
           <div>
-            <input type="radio" name="mortgage-type" id="repayment" value="repayment" required>
+            <input type="radio" name="mortgage-type" id="repayment" value="repayment">
             <label for="repayment">Repayment</label>
           </div>
           <div>
-            <input type="radio" name="mortgage-type" id="interest-only" value="interest-only" required>
+            <input type="radio" name="mortgage-type" id="interest-only" value="interest-only">
             <label for="interest-only">Interest Only</label>
           </div>
         </fieldset>
+        <small class="error-message"></small>
 
         <button type="submit" id="form-button" onclick="sendButton(event)">
           <img src="assets/images/icon-calculator.svg" alt="Icon calculator">

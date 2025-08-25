@@ -256,6 +256,18 @@ input[type="radio"]:focus-visible + label {
   font: inherit;
 }
 
+.error-message {
+  color: var(--Red);
+  font: var(--text-error);
+  min-height: 10px;
+  visibility: hidden;
+}
+
+/* input.input-error {
+  border-color: var(--Red);
+  opacity: 1;
+} */
+
 #results {
   background-color: var(--Slate-900);
 }
@@ -420,6 +432,7 @@ input[type="radio"]:focus-visible + label {
   #results {
     display: flex;
     align-items: center;
+    padding: 4rem;
     border-bottom-left-radius: 50px;
   }
 
