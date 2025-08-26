@@ -54,7 +54,6 @@ function sendButton(event) {
   let monthlyPayment = 0;
   let totalPayment = 0;
 
-
   if (repaymentEl.checked) {
     const monthlyRate = interestRate / 12;
     const numberOfPayments = mortgageTerm * 12;
@@ -94,10 +93,49 @@ function showFieldError(inputEl, message) {
   wrapper.classList.add('input-error');
 
   const container = wrapper.parentElement;
-  const errorMsg = container?.querySelector('.error-message');
+  // const errorMsg = container?.querySelector('.error-message');
+  
+  let errorMsg;
+    if (container !== null && container !== undefined) {
+      errorMsg = container.querySelector('.error-message');
+    } else {
+      errorMsg = undefined;
+    }
 
   if (errorMsg) {
     errorMsg.textContent = message;
     errorMsg.style.visibility = "visible";
+  };
+}
+
+[mortgageAmountEl, mortgageTermEl, interestRateEl].forEach(input => {
+  input.addEventListener("input", () => {
+    clearFieldError(input);
+  });
+});
+
+[repaymentEl, interestOnlyEl].forEach(radio => {
+  radio.addEventListener("change", () => {
+    typeErrorMsg.textContent = "";
+    typeErrorMsg.style.visibility = "hidden";
+  });
+});
+
+function clearFieldError(inputEl) {
+  const wrapper = inputEl.closest('.input-with-unit') || inputEl;
+  wrapper.classList.remove("input-error");
+
+  const container = wrapper.parentElement;
+
+  let errorMsg;
+    if (container !== null && container !== undefined) {
+      errorMsg = container.querySelector('.error-message');
+    } else {
+      errorMsg = undefined;
+    }
+
+  if (errorMsg) {
+    errorMsg.textContent = "";
+    errorMsg.style.visibility = "hidden";
   };
 }

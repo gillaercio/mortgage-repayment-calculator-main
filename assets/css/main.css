@@ -11,7 +11,7 @@ body {
 
 #form-section,
 #results {
-  padding: 1.2rem;
+  padding: 2.4rem;
 }
 
 .title,
@@ -98,6 +98,16 @@ body {
   font: var(--text-inputs);
   color: var(--Slate-900);
   border: none;
+}
+
+.input-with-unit.input-error {
+  border: 1px solid var(--Red);
+  background-color: #ffe6e6;
+}
+
+.input-with-unit.input-error .unit {
+  background-color: var(--Red);
+  color: var(--White);
 }
 
 .form__amount .unit {
@@ -257,9 +267,10 @@ input[type="radio"]:focus-visible + label {
 }
 
 .error-message {
+  display: block;
   color: var(--Red);
   font: var(--text-error);
-  min-height: 10px;
+  margin-top: 0.4rem;
   visibility: hidden;
 }
 

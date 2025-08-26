@@ -30,7 +30,7 @@ html {
   --Slate-1100: hsl(202, 51%, 10%);
 
   --jakarta-font: 'Plus Jakarta Sans', sans-serif;
-  --text-error: 500 1rem/120% var(--jakarta-font);
+  --text-error: 500 1.1rem/120% var(--jakarta-font);
   --text: 500 1.3rem/120% var(--jakarta-font);
   --text-inputs: 700 1.3rem/120% var(--jakarta-font);
   --text-md: 700 1.7rem/120% var(--jakarta-font);
