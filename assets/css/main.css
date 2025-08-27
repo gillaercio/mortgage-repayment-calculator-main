@@ -64,7 +64,7 @@ body {
   overflow: hidden;
 }
 
-.input-with-unit:focus-within {
+.input-with-unit:focus-within:not(.input-error) {
   border: 1px solid var(--Lime);
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 .input-with-unit.input-error {
-  border: 1px solid var(--Red);
+  border-color: var(--Red);
   background-color: #ffe6e6;
 }
 
@@ -111,14 +111,14 @@ body {
 }
 
 .form__amount .unit {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .form__term .unit,
 .form__interest .unit {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #mortgage-amount {
@@ -154,6 +154,11 @@ input[type="checkbox"] {
 
 .form__type legend {
   margin-bottom: 0.8rem;
+}
+
+fieldset.form__type + .error-message {
+  margin-top: .3rem;
+  display: block;
 }
 
 input[type="radio"] {
@@ -228,6 +233,10 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+input:not(.input-error) {
+  outline: none;
+}
+
 input[type="radio"]:focus-visible + label {
   outline: 2px solid var(--Lime);
   outline-offset: 9px;
@@ -272,12 +281,19 @@ input[type="radio"]:focus-visible + label {
   font: var(--text-error);
   margin-top: 0.4rem;
   visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
 
-/* input.input-error {
-  border-color: var(--Red);
+.error-message.visible {
   opacity: 1;
-} */
+  visibility: visible;
+  transition: opacity 0.25s ease;
+}
+
+#form-content > .error-message {
+  margin-top: -1.5rem;
+}
 
 #results {
   background-color: var(--Slate-900);

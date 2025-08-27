@@ -7,14 +7,14 @@ const resultTotal = document.getElementById('result-total');
 
 const typeErrorMsg = document.querySelector('fieldset.form__type + .error-message');
 
+const mortgageAmountEl = document.getElementById("mortgage-amount");
+const mortgageTermEl = document.getElementById("mortgage-term");
+const interestRateEl = document.getElementById("interest-rate");
+const repaymentEl = document.getElementById("repayment");
+const interestOnlyEl = document.getElementById("interest-only");
+
 function sendButton(event) {
   event.preventDefault()
-
-  const mortgageAmountEl = document.getElementById("mortgage-amount");
-  const mortgageTermEl = document.getElementById("mortgage-term");
-  const interestRateEl = document.getElementById("interest-rate");
-  const repaymentEl = document.getElementById("repayment");
-  const interestOnlyEl = document.getElementById("interest-only");
 
   document.querySelectorAll(".error-message").forEach(msg => msg.textContent = "");
   document.querySelectorAll(".input-error").forEach(el => el.classList.remove("input-error"));
@@ -22,25 +22,34 @@ function sendButton(event) {
   const required = 'This field is required';
   let hasError = false;
 
-  if (!mortgageAmountEl.value.trim()) {
-    showFieldError(mortgageAmountEl, required);
-    hasError = true;
-  }
+  // if (!mortgageAmountEl.value.trim()) {
+  //   showFieldError(mortgageAmountEl, required);
+  //   hasError = true;
+  // }
 
-  if (!mortgageTermEl.value.trim()) {
-    showFieldError(mortgageTermEl, required);
-    hasError = true;
-  }
+  // if (!mortgageTermEl.value.trim()) {
+  //   showFieldError(mortgageTermEl, required);
+  //   hasError = true;
+  // }
 
-  if (!interestRateEl.value.trim()) {
-    showFieldError(interestRateEl, required);
-    hasError = true;
-  }
+  // if (!interestRateEl.value.trim()) {
+  //   showFieldError(interestRateEl, required);
+  //   hasError = true;
+  // }
+
+  const requiredFields = [mortgageAmountEl, mortgageTermEl, interestRateEl];
+
+  requiredFields.forEach(input => {
+    if (!input.value.trim()) {
+      showFieldError(input, required);
+      hasError = true;
+    }
+  });
 
   if (!repaymentEl.checked && !interestOnlyEl.checked) {
     if (typeErrorMsg) {
       typeErrorMsg.textContent = required;
-      typeErrorMsg.style.visibility = 'visible';
+      typeErrorMsg.classList.add('visible');
     }
     hasError = true;
   }
@@ -80,7 +89,7 @@ clearButton.addEventListener('click', () => {
 
   document.querySelectorAll(".error-message").forEach(msg => {
     msg.textContent = "";
-    msg.style.visibility = "hidden";
+    msg.classList.remove("visible");
   });
 
   document.querySelectorAll(".input-with-unit.input-error").forEach(el => {
@@ -93,7 +102,6 @@ function showFieldError(inputEl, message) {
   wrapper.classList.add('input-error');
 
   const container = wrapper.parentElement;
-  // const errorMsg = container?.querySelector('.error-message');
   
   let errorMsg;
     if (container !== null && container !== undefined) {
@@ -104,7 +112,7 @@ function showFieldError(inputEl, message) {
 
   if (errorMsg) {
     errorMsg.textContent = message;
-    errorMsg.style.visibility = "visible";
+    errorMsg.classList.add("visible");
   };
 }
 
@@ -117,7 +125,7 @@ function showFieldError(inputEl, message) {
 [repaymentEl, interestOnlyEl].forEach(radio => {
   radio.addEventListener("change", () => {
     typeErrorMsg.textContent = "";
-    typeErrorMsg.style.visibility = "hidden";
+    typeErrorMsg.classList.remove("visible");
   });
 });
 
@@ -136,6 +144,6 @@ function clearFieldError(inputEl) {
 
   if (errorMsg) {
     errorMsg.textContent = "";
-    errorMsg.style.visibility = "hidden";
+    errorMsg.classList.remove("visible");
   };
 }
