@@ -22,21 +22,6 @@ function sendButton(event) {
   const required = 'This field is required';
   let hasError = false;
 
-  // if (!mortgageAmountEl.value.trim()) {
-  //   showFieldError(mortgageAmountEl, required);
-  //   hasError = true;
-  // }
-
-  // if (!mortgageTermEl.value.trim()) {
-  //   showFieldError(mortgageTermEl, required);
-  //   hasError = true;
-  // }
-
-  // if (!interestRateEl.value.trim()) {
-  //   showFieldError(interestRateEl, required);
-  //   hasError = true;
-  // }
-
   const requiredFields = [mortgageAmountEl, mortgageTermEl, interestRateEl];
 
   requiredFields.forEach(input => {
@@ -104,11 +89,11 @@ function showFieldError(inputEl, message) {
   const container = wrapper.parentElement;
   
   let errorMsg;
-    if (container !== null && container !== undefined) {
-      errorMsg = container.querySelector('.error-message');
-    } else {
-      errorMsg = undefined;
-    }
+  if (container !== null && container !== undefined) {
+    errorMsg = container.querySelector('.error-message');
+  } else {
+    errorMsg = undefined;
+  }
 
   if (errorMsg) {
     errorMsg.textContent = message;
@@ -136,11 +121,11 @@ function clearFieldError(inputEl) {
   const container = wrapper.parentElement;
 
   let errorMsg;
-    if (container !== null && container !== undefined) {
-      errorMsg = container.querySelector('.error-message');
-    } else {
-      errorMsg = undefined;
-    }
+  if (container !== null && container !== undefined) {
+    errorMsg = container.querySelector('.error-message');
+  } else {
+    errorMsg = undefined;
+  }
 
   if (errorMsg) {
     errorMsg.textContent = "";
